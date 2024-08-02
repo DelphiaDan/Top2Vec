@@ -2512,19 +2512,6 @@ class Top2Vec:
             self._validate_topic_search(topic_num, num_docs, reduced)
 
             topic_document_indexes = np.where(self.doc_top_reduced == topic_num)[0]
-            print("Indexes type:", type(topic_document_indexes))
-            print("Indexes:", topic_document_indexes)
-            print("Document distribution array type:", type(self.doc_dist))
-            print("Document distribution array shape:", self.doc_dist.shape)
-            if isinstance(topic_document_indexes, list):
-                topic_document_indexes = np.array(topic_document_indexes, dtype=int)
-            elif isinstance(topic_document_indexes, np.ndarray):
-                if topic_document_indexes.dtype != int:
-                    topic_document_indexes = topic_document_indexes.astype(int)
-            print("Indexes type:", type(topic_document_indexes))
-            print("Indexes:", topic_document_indexes)
-            print("Document distribution array type:", type(self.doc_dist))
-            print("Document distribution array shape:", self.doc_dist.shape)
             topic_document_indexes_ordered = np.flip(np.argsort(self.doc_dist_reduced[topic_document_indexes]))
             doc_indexes = topic_document_indexes[topic_document_indexes_ordered][0:num_docs]
             doc_scores = self.doc_dist_reduced[doc_indexes]
@@ -2536,20 +2523,6 @@ class Top2Vec:
             self._validate_topic_search(topic_num, num_docs, reduced)
 
             topic_document_indexes = np.where(self.doc_top == topic_num)[0]
-            print("Indexes type:", type(topic_document_indexes))
-            print("Indexes:", topic_document_indexes)
-            print("Document distribution array type:", type(self.doc_dist))
-            print("Document distribution array shape:", self.doc_dist.shape)
-            if isinstance(topic_document_indexes, list):
-                topic_document_indexes = np.array(topic_document_indexes, dtype=int)
-            elif isinstance(topic_document_indexes, np.ndarray):
-                if topic_document_indexes.dtype != int:
-                    topic_document_indexes = topic_document_indexes.astype(int)
-            print("Indexes type:", type(topic_document_indexes))
-            print("Indexes:", topic_document_indexes)
-            print("Document distribution array type:", type(self.doc_dist))
-            print("Document distribution array shape:", self.doc_dist.shape)
-
             topic_document_indexes_ordered = np.flip(np.argsort(self.doc_dist[topic_document_indexes]))
             doc_indexes = topic_document_indexes[topic_document_indexes_ordered][0:num_docs]
             doc_scores = self.doc_dist[doc_indexes]
