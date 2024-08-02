@@ -1409,6 +1409,11 @@ class Top2Vec:
         self.doc_top, self.doc_dist = self._calculate_documents_topic(self.topic_vectors,
                                                                       self.document_vectors,
                                                                       topic_index=topic_index)
+        if isinstance(self.doc_top, list):
+            self.doc_top = np.array(self.doc_top)
+
+        if isinstance(self.doc_dist, list):
+            self.doc_dist = np.array(self.doc_dist)
 
         # calculate topic sizes
         self.topic_sizes = self._calculate_topic_sizes(hierarchy=False)
